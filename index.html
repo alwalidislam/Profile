@@ -26,7 +26,9 @@ body{
   overflow-x: hidden;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 header {
   position: relative;
   min-height: 450px;
@@ -84,8 +86,27 @@ h1:hover, h2:hover, p:hover, a:hover, .skills span:hover, .contact-item:hover {
   100% { transform: translateY(0); }
 }
 
-h1 { ; padding: 8px 25px; border-radius: 30px; color:#000; }
-header p { background: #ffeaa7; padding: 6px 20px; border-radius: 20px; color:#000; }
+/* নামের মেইন টাইটেল */
+h1 { 
+  padding: 8px 25px; 
+  border-radius: 30px; 
+  color: #000; 
+  background: transparent; 
+}
+
+/* টাইটেলের নিচের সেই হলুদ ব্যাকগ্রাউন্ডের লাইন */
+header p { 
+  background: #ffeaa7; 
+  padding: 6px 20px; 
+  border-radius: 20px; 
+  color: #000; 
+  display: inline-block; /* যাতে ব্যাকগ্রাউন্ড শুধু লেখার ওপর থাকে */
+}
+
+/* ডার্ক মোডে লেখা যাতে গায়েব না হয়ে যায় */
+body.dark h1 {
+  color: #fff;
+}
 
 .btn {
   background: #fff; color: #4e54c8; padding: 12px 30px;
@@ -168,7 +189,7 @@ footer { text-align: center; padding: 30px; background: #0a0a0a; color: white; }
 .neon-card p {
   color:#fff;
   text-shadow: 0 0 5px rgba(0,255,255,0.7);
-  line-height: 1.6;
+  line-height: 1;
   font-weight: 500;
 }
 
@@ -256,19 +277,19 @@ header, .container, footer {
 </style>
 </head>
 
-<body>
+<body class="dark">
 <canvas class="matrix" id="matrix"></canvas>
 <audio id="hoverSound" preload="auto">
   <source src="https://assets.mixkit.co/sfx/preview/mixkit-electric-click-1126.mp3" type="audio/mpeg">
 </audio>
 
-<button class="toggle">🌙</button>
+<button class="toggle">☀️</button>
 
 <header>
   
   <img src="photo.jpg" class="profile-pic" alt="Al Walid">
   <h1>Al Walid</h1>
-  <p>Developer | Programmer</p>
+  <p>Developer | Programmer | Politician | Trader</p>
   <a href="#contact" class="btn">Contact Me</a>
 </header>
 
@@ -276,9 +297,17 @@ header, .container, footer {
 
   <!-- ===== FUTURISTIC NEON ABOUT ME ===== -->
   <div class="card neon-card">
+
     <h2>About Me</h2>
-    <p>I am a Developer, Designer, Dark Web Researcher, Candlestick Analyser And Cyber Speacialist.</p>
-  </div>
+    <div class="About Me">
+  <p>Assalamu Alaikum. I am an experienced cyber specialist with a diverse professional background.</p>
+  <p>I am actively involved in the political arena of Bangladesh.</p>
+  <p>I manage my own business organization based in Dhaka.</p>
+  <p>I love my country, Bangladesh and strive to live in accordance with the principles of Islam.</p>
+  <p>My hometown is in Gopalganj, I am currently in the final stage of completing my university education.</p>
+</div>
+ </div>
+ 
 
   <!-- ===== FUTURISTIC NEON SKILLS CARD ===== -->
   <div class="card neon-card">
@@ -293,15 +322,16 @@ header, .container, footer {
       <span>Crypto</span>
       <span>Malware Analysis</span>
       <span>API Catching</span>
-      <span>Fishing</span>
       <span>Digital Forensics</span>
       <span>Reverse Engineering</span>
+      <span>To lead</span>
+
 
     </div>
   </div>
 
-  <!-- ===== CONTACT CARD ===== -->
-<div class="card" id="contact">
+  <!-- ===== FUTURISTIC NEON SKILLS CARD ===== -->
+  <div class="card neon-card" id="contact">
   <div class="contact-wrapper">
     
     <div class="contact-column">
@@ -318,10 +348,10 @@ header, .container, footer {
     <div class="contact-column">
       <h2>Important Links</h2>
       <div class="contact-list">
-        <a href="#" class="contact-item">🔗 My GitHub Portfolio</a>
-        <a href="#" class="contact-item">🛡️ Cyber Security Tools</a>
-        <a href="#" class="contact-item">📊 Trading Analysis Blog</a>
-        <a href="#" class="contact-item">📑 Download My CV</a>
+        <a href="প্রমান.pdf" target="_blank" class="contact-item">📑 বাংলাদেশের বিরুদ্ধে হিন্দুত্ববাদীদের মিশনের প্রমান</a>
+        <a href="#" class="contact-item">🛡️ ইলুমিনাতির হাতে বিশ্ব ব্যবস্থা </a>
+        <a href="#" class="contact-item">📊 ইসলামি দলের মধ্যে বিভেদ কেনো</a>
+        <a href="#" class="contact-item">📑 You’re on my radar 24/7</a>
         <a href="#" class="contact-item">🛠️ Private Resources</a>
       </div>
     </div>
@@ -337,7 +367,9 @@ header, .container, footer {
 
 document.querySelector('.toggle').onclick = () => {
   document.body.classList.toggle('dark');
-  document.querySelector('.toggle').innerText = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  // নতুন লজিক: ডার্ক মোড থাকলে সূর্য দেখাবে, না থাকলে চাঁদ
+  const isDark = document.body.classList.contains('dark');
+  document.querySelector('.toggle').innerText = isDark ? '☀️' : '🌙';
 };
 
 const cursor = document.querySelector('.cursor');
