@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Al Walid | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#f4f6f8;
+  --text:#333;
+  --card:#fff;
+}
+body.dark{
+  --bg:#0f1220;
+  --text:#f1f1f1;
+  --card:#1c1f3a;
+}
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s;
+  overflow-x: hidden;
+}
+
+
+header {
+  position: relative;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent; /* 🔥 এটুকুই আসল fix */
+  border-bottom: 1px solid rgba(0,255,255,0.2);
+}
+
+
+
+
+header * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== HUMM EFFECT (নড়াচড়া) ===== */
+h1, h2, p, a, .skills span, .contact-item {
+  display: inline-block;
+}
+
+h1:hover, h2:hover, p:hover, a:hover, .skills span:hover, .contact-item:hover {
+  animation: humm-hover 0.2s infinite;
+}
+
+@keyframes humm-hover {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(4px, -4px); }
+  50% { transform: translate(-4px, 4px); }
+  75% { transform: translate(4px, 4px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ===== Profile & Content ===== */
+.profile-pic{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  border:5px solid #fff;
+  object-fit:cover;
+  margin-bottom:15px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+
+  /* 🔥 auto floating */
+  animation: floatPic 4s ease-in-out infinite;
+}
+
+@keyframes floatPic{
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+h1 { ; padding: 8px 25px; border-radius: 30px; color:#000; }
+header p { background: #ffeaa7; padding: 6px 20px; border-radius: 20px; color:#000; }
+
+.btn {
+  background: #fff; color: #4e54c8; padding: 12px 30px;
+  border-radius: 30px; text-decoration: none; font-weight: bold;
+  margin-top: 20px; display: inline-block;
+  transition: 0.3s;
+}
+
+/* ===== Layout ===== */
+.container { max-width: 900px; margin: auto; padding: 40px 20px; }
+.card { background: var(--card); padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.skills span { padding: 8px 15px; background: linear-gradient(90deg, #ff6a00, #ee0979); color: #fff; border-radius: 20px; margin: 5px; }
+
+/* Contact Section Fix */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.contact-item {
+  background: #dff9fb;
+  padding: 10px 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: block; /* আলাদা লাইন নিশ্চিত করে */
+  width: fit-content;
+}
+
+footer { text-align: center; padding: 30px; background: #0a0a0a; color: white; }
+
+.toggle { position: fixed; top: 20px; right: 20px; background: #fff; border: none; padding: 12px; border-radius: 50%; cursor: pointer; z-index: 2000; }
+
+.cursor {
+  width: 20px; height: 20px; border-radius: 50%;
+  position: fixed; pointer-events: none;
+  background: rgba(143,148,251,0.7);
+  box-shadow: 0 0 20px #8f94fb; z-index: 3000;
+}
+
+/* ===== FUTURISTIC NEON GLASS CARD (About Me) ===== */
+.neon-card {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,255,255,0.6);
+  box-shadow:
+    0 0 15px rgba(0,255,255,0.7),
+    0 0 35px rgba(0,255,255,0.4);
+  transition: 0.4s ease;
+}
+
+/* hover effect */
+.neon-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 25px #00fff0,
+    0 0 60px #00fff0,
+    0 0 100px #00fff0;
+}
+
+/* neon title */
+.neon-card h2 {
+  color:#00fff0;
+  text-shadow:
+    0 0 5px #00fff0,
+    0 0 15px #00fff0,
+    0 0 30px #00fff0,
+    0 0 60px #00fff0;
+  margin-bottom: 15px;
+}
+
+/* neon paragraph */
+.neon-card p {
+  color:#fff;
+  text-shadow: 0 0 5px rgba(0,255,255,0.7);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ===== FLOATING SKILLS ===== */
+.neon-card .skills span{
+  animation: floatSkill 3s ease-in-out infinite;
+}
+
+.neon-card .skills span:nth-child(odd){
+  animation-delay: 0.3s;
+}
+.neon-card .skills span:nth-child(even){
+  animation-delay: 0.6s;
+}
+
+@keyframes floatSkill{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-8px); }
+  100%{ transform: translateY(0); }
+}
+
+/* ===== MATRIX BACKGROUND ===== */
+.matrix {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: 0;
+  pointer-events:none;
+  opacity:0.18;
+}
+
+header, .container, footer {
+  position: relative;
+  z-index: 2;
+}
+
+.profile-pic:hover{
+  animation: humm-hover 0.15s infinite;
+  box-shadow:
+    0 0 20px #00fff0,
+    0 0 40px #00fff0;
+}
+/* কন্টাক্ট সেকশনকে পাশাপাশি রাখার জন্য ফিক্সড স্টাইল */
+.contact-wrapper {
+  display: flex;
+  justify-content: space-between; /* দুই পাশের মাঝে গ্যাপ রাখবে */
+  gap: 20px;
+  flex-wrap: nowrap; /* যাতে কোনোভাবেই নিচে না নামে */
+  width: 100%;
+}
+
+.contact-column {
+  flex: 1; /* সমান জায়গা নিবে */
+  min-width: 0; /* এটি ফ্লেক্স বক্সকে ছোট হতে সাহায্য করে */
+}
+
+.contact-item {
+  background: #dff9fb;
+  padding: 10px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  font-size: 13px; /* লেখা যাতে ভেঙে না যায় তাই সাইজ ছোট করা হয়েছে */
+  white-space: nowrap; /* এক লাইনে থাকবে */
+  overflow: hidden; 
+  text-overflow: ellipsis; /* নাম বড় হলে ৩টি ডট দেখাবে */
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+/* মোবাইল স্ক্রিনে লেখা আরও ছোট হবে যাতে পাশাপাশি সুন্দর দেখায় */
+@media (max-width: 480px) {
+  .contact-item {
+    font-size: 11px;
+    padding: 8px 5px;
+  }
+  .contact-wrapper {
+    gap: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas class="matrix" id="matrix"></canvas>
+<audio id="hoverSound" preload="auto">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-electric-click-1126.mp3" type="audio/mpeg">
+</audio>
+
+<button class="toggle">🌙</button>
+
+<header>
+  
+  <img src="photo.jpg" class="profile-pic" alt="Al Walid">
+  <h1>Al Walid</h1>
+  <p>Developer | Programmer</p>
+  <a href="#contact" class="btn">Contact Me</a>
+</header>
+
+<div class="container">
+
+  <!-- ===== FUTURISTIC NEON ABOUT ME ===== -->
+  <div class="card neon-card">
+    <h2>About Me</h2>
+    <p>I am a Developer, Designer, Dark Web Researcher, Candlestick Analyser And Cyber Speacialist.</p>
+  </div>
+
+  <!-- ===== FUTURISTIC NEON SKILLS CARD ===== -->
+  <div class="card neon-card">
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span> Ethical Hacking</span>
+      <span>Social Engineering</span>
+      <span>Linux & Fluttar</span>
+      <span>Al Programing Language</span>
+      <span>Spy</span>
+      <span>Crypto</span>
+      <span>Malware Analysis</span>
+      <span>API Catching</span>
+      <span>Fishing</span>
+      <span>Digital Forensics</span>
+      <span>Reverse Engineering</span>
+
+    </div>
+  </div>
+
+  <!-- ===== CONTACT CARD ===== -->
+<div class="card" id="contact">
+  <div class="contact-wrapper">
+    
+    <div class="contact-column">
+      <h2>Contact</h2>
+      <div class="contact-list">
+        <a href="mailto:mdwalidislam26@gmail.com" class="contact-item">📧 Email: mdwalidislam26@gmail.com</a>
+        <a href="tel:+8801875260477" class="contact-item">📞 WhatsApp: +880 1875260477</a>
+        <a href="https://t.me/innocenttrader" target="_blank" class="contact-item">✈️ Telegram: @innocenttrader</a>
+        <a href="https://vm.tiktok.com/ZSHK7uLhdPDd2-CFp93/" target="_blank" class="contact-item">🎵 TikTok: Visit Profile</a>
+        <a href="https://www.facebook.com/share/1HGkcC9WfR/" target="_blank" class="contact-item">📘 Facebook: Profile</a>
+      </div>
+    </div>
+
+    <div class="contact-column">
+      <h2>Important Links</h2>
+      <div class="contact-list">
+        <a href="#" class="contact-item">🔗 My GitHub Portfolio</a>
+        <a href="#" class="contact-item">🛡️ Cyber Security Tools</a>
+        <a href="#" class="contact-item">📊 Trading Analysis Blog</a>
+        <a href="#" class="contact-item">📑 Download My CV</a>
+        <a href="#" class="contact-item">🛠️ Private Resources</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>© 2026 Al Walid</footer>
+
+<div class="cursor"></div>
+
+<script>
+
+document.querySelector('.toggle').onclick = () => {
+  document.body.classList.toggle('dark');
+  document.querySelector('.toggle').innerText = document.body.classList.contains('dark') ? '☀️' : '🌙';
+};
+
+const cursor = document.querySelector('.cursor');
+let mouseX=0, mouseY=0, cx=0, cy=0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+function animateCursor() {
+  cx += (mouseX - cx) * 0.12;
+  cy += (mouseY - cy) * 0.12;
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+</script>
+<script>
+const hoverSound = document.getElementById("hoverSound");
+
+document.querySelectorAll(".neon-card, .skills span, .btn").forEach(el=>{
+  el.addEventListener("mouseenter", ()=>{
+    hoverSound.currentTime = 0;
+    hoverSound.play();
+  });
+});
+</script>
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01ALWALIDCYBER";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let i=0;i<columns;i++){
+  drops[i] = 1;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#00fff0";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    const text = letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 50);
+</script>
+<script>
+document.addEventListener("click", ()=>{
+  const s = document.getElementById("hoverSound");
+  s.volume = 0.4;
+  s.play().then(()=>s.pause());
+},{ once:true });
+</script>
+
+</body>
+</html>
