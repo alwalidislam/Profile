@@ -48,7 +48,26 @@ header * {
   position: relative;
   z-index: 2;
 }
+}
+header {
+  position: relative;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+  text-align: center;
+  background: transparent; /* 🔥 এটুকুই আসল fix */
+  border-bottom: 1px solid rgba(0,255,255,0.2);
+}
 
+
+
+
+header * {
+  position: relative;
+  z-index: 2;
+}
 /* ===== HUMM EFFECT (নড়াচড়া) ===== */
 h1, h2, p, a, .skills span, .contact-item {
   display: inline-block;
@@ -289,7 +308,7 @@ header, .container, footer {
   
   <img src="photo.jpg" class="profile-pic" alt="Al Walid">
   <h1>Al Walid</h1>
-  <p>Developer | Programmer | Politician | Trader</p>
+  <p>Developer | Programmer | Trader | Politician</p>
   <a href="#contact" class="btn">Contact Me</a>
 </header>
 
@@ -339,9 +358,10 @@ header, .container, footer {
       <div class="contact-list">
         <a href="mailto:mdwalidislam26@gmail.com" class="contact-item">📧 Email: mdwalidislam26@gmail.com</a>
         <a href="tel:+8801875260477" class="contact-item">📞 WhatsApp: +880 1875260477</a>
+        <a href="https://www.facebook.com/share/1HGkcC9WfR/" target="_blank" class="contact-item">📘 Facebook: Al Walid</a>
         <a href="https://t.me/alwalidislam" target="_blank" class="contact-item">✈️ Telegram: Al Walid</a>
+        <a href="https://www.instagram.com/its_alwalid?igsh=YjgxZHpvNHk4bGN2" target="_blank" class="contact-item">📷 Instagram: Al Walid</a>     
         <a href="https://vm.tiktok.com/ZSHK7uLhdPDd2-CFp93/" target="_blank" class="contact-item">🎵 TikTok: Visit Profile</a>
-        <a href="https://www.facebook.com/share/1HGkcC9WfR/" target="_blank" class="contact-item">📘 Facebook: Profile</a>
       </div>
     </div>
 
@@ -353,6 +373,7 @@ header, .container, footer {
         <a href="https://youtu.be/OmKjVSsTYkc?si=SAfTIjwVq4E1hh2G" target="_blank" class="contact-item">📊 ইসলামি দলের মধ্যে বিভেদ কেনো</a>
         <a href="https://youtu.be/pH3_hYBZg3k?si=zSeVjJ3CtY67X_VT" target="_blank" class="contact-item">📑 আসন্ন গাজওয়াতুল হিন্দ ও মালহামা</a>
         <a href="#" class="contact-item">🛠️  You’re on my radar 24/7</a>
+        <a href="#" class="contact-item">🛠️  তোমার ওই ফাজলামির কারন ব্যাখ্যা করতে পারো ফিডব্যাকে</a>
       </div>
     </div>
 
@@ -369,7 +390,7 @@ header, .container, footer {
   </form>
 </div> <!-- <-- এই div টি অবশ্যই বন্ধ করতে হবে -->
 
-<footer>© 2026 Al Walid</footer>
+<footer>© 2026 Al Walid All rights reserved.</footer>
 
 <div class="cursor"></div>
 
@@ -446,6 +467,31 @@ document.addEventListener("click", ()=>{
   s.volume = 0.4;
   s.play().then(()=>s.pause());
 },{ once:true });
+</script>
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbzbHaag7rMbUZgzgGHP9LU-CYp5aZlSqVO_LLbQpWMKcBittJDCWg3PC-wMR6wwumNm/exec";
+
+document.getElementById("feedbackForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const name = document.getElementById("fname").value;
+  const message = document.getElementById("fmsg").value;
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify({ name, message })
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById("feedbackStatus").innerText =
+      "Thanks! Your feedback has been saved.";
+    e.target.reset();
+  })
+  .catch(() => {
+    document.getElementById("feedbackStatus").innerText =
+      "Error! Please try again.";
+  });
+});
 </script>
 
 </body>
